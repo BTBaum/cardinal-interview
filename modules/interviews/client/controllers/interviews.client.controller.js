@@ -1,8 +1,8 @@
 'use strict';
 
 // Creator controller
-angular.module('creator').controller('CreatorController', ['$scope', '$stateParams', '$location', 'Authentication', 'Creator',
-  function ($scope, $stateParams, $location, Authentication, Creator) {
+angular.module('interviews').controller('InterviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Interviews',
+  function ($scope, $stateParams, $location, Authentication, Interviews) {
     $scope.authentication = Authentication;
 
     // Create new Interview
@@ -18,16 +18,18 @@ angular.module('creator').controller('CreatorController', ['$scope', '$statePara
       // Create new Interview object
       var interview = new Interviews({
         title: this.title,
-        question: this.question
+        question: this.question,
+        answer: this.answer
       });
 
       // Redirect after save
       interview.$save(function (response) {
-        $location.path('creator/' + response._id);
+        $location.path('interviews/' + response._id);
 
         // Clear form fields
         $scope.title = '';
         $scope.question = '';
+        $scope.answer = '';
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -45,7 +47,7 @@ angular.module('creator').controller('CreatorController', ['$scope', '$statePara
         }
       } else {
         $scope.interview.$remove(function () {
-          $location.path('interview');
+          $location.path('interviews');
         });
       }
     };
@@ -63,7 +65,7 @@ angular.module('creator').controller('CreatorController', ['$scope', '$statePara
       var interview = $scope.interview;
 
       interview.$update(function () {
-        $location.path('interview/' + interview._id);
+        $location.path('interviews/' + interview._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
