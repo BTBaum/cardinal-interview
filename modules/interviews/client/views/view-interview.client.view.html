@@ -1,0 +1,23 @@
+<section ng-controller="InterviewsController" ng-init="findOne()">
+  <div class="page-header">
+    <h1 ng-bind="interview.title"></h1>
+  </div>
+  <div class="pull-right" ng-show="authentication.user._id == interview.user._id">
+    <a class="btn btn-primary" ui-sref="interviews.edit({interviewId: interview._id})">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="remove();">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="interview.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="interview.user" ng-bind="interview.user.displayName"></span>
+      <span ng-if="!interview.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="interview.content"></p>
+</section>
