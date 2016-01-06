@@ -12,7 +12,8 @@
         <span ng-if="!interview.user">Deleted User</span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="interview.title"></h4>
-      <p class="list-group-item-text" ng-bind="interview.content"></p>
+      <p class="list-group-item-text" ng-bind="interview.question"></p>
+      <p class="list-group-item-text" ng-bind="interview.answer"></p>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="interviews.$resolved && !interviews.length">

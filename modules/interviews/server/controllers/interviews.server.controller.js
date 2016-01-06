@@ -4,7 +4,7 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     Interview = mongoose.model('Interview'),
-    errorHandler = require(path.resolve('./module/core/server/controllers/errors.server.controller'));
+    errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 // Create an Interview
 exports.create = function (req, res) {
@@ -62,7 +62,21 @@ exports.delete = function (req, res) {
 };
 
 // List of Interviews
+exports.list = function (req, res) {
+  Interview.find().sort('-created').populate('user', 'displayName').exec(function (err, interviews) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(interview);
+    }
+  });
+};
+
+// Article middleware
 exports.interviewByID = function (req, res, next, id) {
+
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Interview is invalid'

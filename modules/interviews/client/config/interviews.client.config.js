@@ -1,9 +1,9 @@
 'use strict';
 
-// Configure the Creator Module
+// Configure the Interview Module
 angular.module('interviews').run(['Menus',
   function (Menus) {
-    // Add the creator dropdown item
+    // Add the Interview dropdown item
     Menus.addMenuItem('topbar', {
       title: 'Interview',
       state: 'interviews',
@@ -13,13 +13,13 @@ angular.module('interviews').run(['Menus',
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'interviews', {
-      title: 'List Articles',
+      title: 'List Interviews',
       state: 'interviews.list'
     });
 
     // Add the dropdown create item
     Menus.addSubMenuItem('topbar', 'interviews', {
-      title: 'Create Articles',
+      title: 'Create Interviews',
       state: 'interviews.create',
       roles: ['user']
     });

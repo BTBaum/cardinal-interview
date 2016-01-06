@@ -51,13 +51,13 @@ Example implementation in file.js
 Fixes #82
 ```
 
-* Types: 
+* Types:
   * feat - Features, Enhancements, and overall Improvements
   * fix - Fixes, Bugs, HotFixs, etc...
   * doc - Changes to the Documentation and doesn't actually touch any code.
 * Scope:
   * The scope should be where the change took place.
-  * Examples: users, core, config, articles
+  * Examples: users, core, config, articles, interviews
 * Subject:
   * The subject line should be clear and consice as to what is being accomplished in the commit.
 * General Rules:

@@ -1,17 +1,18 @@
 'use strict';
-
 //Module dependencies
 var acl = require('acl');
-
 // Using the memory backend
 acl = new acl(new acl.memoryBackend());
-
 // Invoke Interviews Permissions
 exports.invokeRolesPolicies = function () {
   acl.allow([{
     roles: ['admin'],
     allows: [{
       resources: '/api/interviews',
+      permissions: '*'
+    },
+    {
+      resources: '/api/interviews/:interviewId',
       permissions: '*'
     }]
   },

@@ -1,6 +1,6 @@
 'use strict';
 
-// Creator controller
+// Interviews controller
 angular.module('interviews').controller('InterviewsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Interviews',
   function ($scope, $stateParams, $location, Authentication, Interviews) {
     $scope.authentication = Authentication;
