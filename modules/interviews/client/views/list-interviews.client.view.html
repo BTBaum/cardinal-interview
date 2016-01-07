@@ -3,7 +3,7 @@
     <h1>Interviews</h1>
   </div>
   <div class="list-group">
-    <a ng-repeat="interview in interviews" ui-sref="interview.view({interviewId: interview._id})" class="list-group-item">
+    <a ng-repeat="interview in interviews" ui-sref="interviews.view({interviewId: interview._id})" class="list-group-item">
       <small class="list-group-item-text">
         Posted on
         <span ng-bind="interview.created | date:'mediumDate'"></span>

@@ -6,12 +6,12 @@ var interviewsPolicy = require('../policies/interviews.server.policy'),
 
 module.exports = function (app) {
   //Interviews collection routes
-  app.route('/api/interviews').all(interviewsPolicy.invokeRolesPolicies)
+  app.route('/api/interviews').all(interviewsPolicy.isAllowed)
     .get(interviews.list)
     .post(interviews.create);
 
   // Single Interview routes
-  app.route('/api/interviews/:interviewId').all(interviewsPolicy.invokeRolesPolicies)
+  app.route('/api/interviews/:interviewId').all(interviewsPolicy.isAllowed)
     .get(interviews.read)
     .put(interviews.update)
     .delete(interviews.delete);
